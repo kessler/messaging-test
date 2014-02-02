@@ -23,7 +23,9 @@ setInterval(function () {
 }, 1000)
 
 setTimeout(function () {
-	console.log('client-s: %d m/sec', sent / 20)
-	console.log('client-r: %d m/sec', received / 20)
-	process.exit(0)
+	sock.close(function () {
+		console.log('client-s: %d m/sec', sent / 20)
+		console.log('client-r: %d m/sec', received / 20)
+		process.exit(0)
+	})
 }, 20000)

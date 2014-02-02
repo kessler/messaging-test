@@ -13,7 +13,7 @@ socket.bind('tcp://127.0.0.1: ' + process.argv[2], function(err) {
 	console.log('bound!')
 
 	setInterval(function() {
-		for (var i = 0; i < 10000; i++) {
+		for (var i = 0; i < 100000; i++) {
 			sent++
 
 			socket.send(sent)

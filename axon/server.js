@@ -16,7 +16,8 @@ sock.on('message', function(img, reply){
 });
 
 setTimeout(function () {
-
-	console.log('server-r: %d m/sec', received)
-	process.exit(0)
+	sock.close(function () {
+		console.log('server-r: %d m/sec', received / 20)
+		process.exit(0)
+	})
 }, 20000)
