@@ -10,13 +10,14 @@ console.log('connected!');
 
 var messages = 0
 
-setInterval (function () {
-	console.log(messages)
-	messages = 0
-}, 1000)
-
 socket.on('message', function(envelope, data) {
 	//console.log(socket.identity + ': received ' + envelope + ' - ' + data.toString());
 	messages++
 	socket.send([envelope, data]);
 });
+
+
+setTimeout(function () {
+	console.log('router-r: %d m/sec',messages / 20)
+	process.exit(0)
+}, 20000)
