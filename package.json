@@ -1,0 +1,15 @@
+{
+  "name": "zeromq-test",
+  "version": "0.0.1",
+  "description": "zeromq tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yaniv Kessler",
+  "license": "Proprietary",
+  "dependencies": {
+    "zmq": "~2.6.0",
+    "axon": "~1.0.0"
+  }
+}
