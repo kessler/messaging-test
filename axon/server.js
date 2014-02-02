@@ -1,10 +1,16 @@
+var config = require('../config')
 var axon = require('axon')
 var sock = axon.socket('rep')
 
-sock.connect('tcp://127.0.0.1:' + process.argv[2])
+process.on('uncaughtException', function () {
+	console.log('server error')
+	console.log(arguments)
+})
 
-sock.on('connect', function() {
-	console.log('connected')
+sock.bind('tcp://127.0.0.1:' + config.port)
+
+sock.on('bind', function() {
+	console.log('bound ' + config.port)
 })
 
 
@@ -16,8 +22,8 @@ sock.on('message', function(img, reply){
 });
 
 setTimeout(function () {
-	sock.close(function () {
-		console.log('server-r: %d m/sec', received / 20)
-		process.exit(0)
-	})
-}, 20000)
+
+	console.log('server-r: %d m/sec', received / (config.duration / 1000))
+	process.exit(0)
+
+}, config.duration)
